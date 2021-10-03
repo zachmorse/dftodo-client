@@ -1,3 +1,6 @@
 # Diversyfund Todo Client
 
-Built with React, Redux, Redux Thunk, and Material UI.
+Technologies
+  - React
+  - Typescript
+  - Redux + Redux Thunk
