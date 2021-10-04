@@ -2,6 +2,7 @@ import { GET_ALL_TASKS, CREATE_TASK, WRITE_PENDING_TASK } from '../constants'
 
 const initialState = {
   pendingTask: '',
+  allTasks: [],
   incompleteTasks: [],
   proceedingTasks: [],
   completedTasks: []
@@ -14,6 +15,7 @@ const taskReducer = (state = initialState, action) => {
       return {
         ...state,
         pendingTask: '',
+        allTasks: action.payload,
         incompleteTasks: action.payload.filter(x => x.status === 'incomplete'),
         proceedingTasks: action.payload.filter(x => x.status === 'proceeding'),
         completedTasks: action.payload.filter(x => x.status === 'complete')
@@ -21,6 +23,7 @@ const taskReducer = (state = initialState, action) => {
     case GET_ALL_TASKS:
       return {
         ...state,
+        allTasks: action.payload,
         incompleteTasks: action.payload.filter(x => x.status === 'incomplete'),
         proceedingTasks: action.payload.filter(x => x.status === 'proceeding'),
         completedTasks: action.payload.filter(x => x.status === 'complete')
