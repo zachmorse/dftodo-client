@@ -1,6 +1,16 @@
 # Diversyfund Todo Client
 
-Technologies
-  - React
-  - Typescript
-  - Redux + Redux Thunk
+A lightweight todo app, deployed at https://dftodo.surge.sh/
+
+## Technologies
+
+
+  - Frontend
+    - React
+    - Typescript
+    - Redux + Redux Thunk
+  - Backend
+    - node.js
+    - express
+    - prisma
+
