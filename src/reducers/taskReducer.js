@@ -20,23 +20,16 @@ const initialState = {
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     //eslint-disable-next-line
-    case GET_ALL_TASKS:
-      return {
-        ...state,
-        allTasks: action.payload,
-        incompleteTasks: action.payload.filter(x => x.status === 'incomplete'),
-        proceedingTasks: action.payload.filter(x => x.status === 'proceeding'),
-        completedTasks: action.payload.filter(x => x.status === 'complete')
-      }
     case CREATE_TASK:
       return {
         ...state,
-        pendingTask: '',
         allTasks: action.payload,
+        pendingTask: '',
         incompleteTasks: action.payload.filter(x => x.status === 'incomplete'),
         proceedingTasks: action.payload.filter(x => x.status === 'proceeding'),
         completedTasks: action.payload.filter(x => x.status === 'complete')
       }
+    case GET_ALL_TASKS:
     case DELETE_TASK:
       return {
         ...state,

@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     '@media (max-width: 590px)': {
       maxWidth: '100%',
       width: '85vw',
-      maxHeight: '60vh'
+      maxHeight: '50vh'
     }
   },
   panelBox: {

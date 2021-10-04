@@ -4,7 +4,6 @@ import './index.css'
 
 import App from './App'
 import store from './store'
-// import store from './hooks/store'
 
 ReactDOM.render(
   <Provider store={store}>

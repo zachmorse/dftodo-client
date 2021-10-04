@@ -9,7 +9,7 @@ import {
   CANCEL_UPDATE
 } from '../constants'
 
-const baseURI = `http://localhost:4000/api/tasks`
+const baseURI = `https://serene-sands-93685.herokuapp.com/api/tasks`
 
 export const getAllTasks = () => async dispatch => {
   await axios.get(baseURI).then(response => {
@@ -34,8 +34,8 @@ export const deleteTask = id => async dispatch => {
 export const initiateUpdate = task => ({ type: INITIATE_UPDATE, payload: task })
 export const cancelUpdate = () => ({ type: CANCEL_UPDATE })
 
-export const updateTask = (id, description, status) => async dispatch => {
-  await axios.put(`${baseURI}/update`, { id: id, description: description, status: status }).then(response => {
+export const updateTask = data => async dispatch => {
+  await axios.put(`${baseURI}/update`, data).then(response => {
     return dispatch({ type: UPDATE_TASK, payload: response.data })
   })
 }
