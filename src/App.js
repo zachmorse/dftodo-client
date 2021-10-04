@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/styles'
 import Title from './components/Title'
 import TaskPanel from './components/TaskPanel'
 import Form from './components/Form'
+import UpdateDialog from './components/UpdateDialog'
 
 const useStyles = makeStyles({
   root: {
@@ -24,6 +25,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   const pendingTask = useSelector(state => state.tasks.pendingTask)
+  const stagedTask = useSelector(state => state.tasks.taskStagedForUpdate)
   const allTasks = useSelector(state => state?.tasks?.allTasks)
   const incompleteTasks = useSelector(state => state?.tasks?.incompleteTasks)
   const proceedingTasks = useSelector(state => state?.tasks?.proceedingTasks)
@@ -49,6 +51,7 @@ const App = () => {
         proceedingTasks={proceedingTasks}
         completedTasks={completedTasks}
       />
+      <UpdateDialog open={stagedTask ? true : false} data={stagedTask} />
     </div>
   )
 }

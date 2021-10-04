@@ -4,7 +4,7 @@ import { List, ListItem, IconButton } from '@material-ui/core'
 import UpdateOutlinedIcon from '@material-ui/icons/UpdateOutlined'
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 
-import { deleteTask } from '../actions/taskActions'
+import { deleteTask, initiateUpdate } from '../actions/taskActions'
 import { useDispatch } from 'react-redux'
 
 const STATUS_COLORS = {
@@ -15,8 +15,9 @@ const STATUS_COLORS = {
 
 const useStyles = makeStyles({
   listItem: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: '1fr 96px',
+    gridTemplateRows: 'auto',
     background: '#fff',
     color: 'rgb(81 89 98)',
     transition: 'background 125ms',
@@ -59,7 +60,14 @@ const TaskItem = ({ data, showStatus = false }) => {
               </span>
             </div>
             <div className={styles.buttonContainer}>
-              <IconButton className={styles.iconButton} onClick={() => console.log('open dialog for item update')}>
+              <IconButton
+                className={styles.iconButton}
+                onClick={() => {
+                  console.log('stage item for update by passing id up to action creator, open dialog for item update')
+                  dispatch(initiateUpdate(task))
+                  // setUpdatePanelOpen(true)
+                }}
+              >
                 <UpdateOutlinedIcon size='small' />
               </IconButton>
               <IconButton className={styles.iconButton} onClick={() => dispatch(deleteTask(task.id))}>
