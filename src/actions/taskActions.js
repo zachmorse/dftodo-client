@@ -10,13 +10,9 @@ export const getAllTasks = () => async dispatch => {
   })
 }
 
-export const writePendingTask = formValue => {
-  console.log('CREATE TASK', formValue)
-  return { type: WRITE_PENDING_TASK, payload: formValue }
-}
+export const writePendingTask = formValue => ({ type: WRITE_PENDING_TASK, payload: formValue })
 
 export const createTask = task => async dispatch => {
-
   await axios.post(`${baseURI}/create`, { description: task }).then(response => {
     console.log('response', response)
     return dispatch({ type: CREATE_TASK, payload: response.data })

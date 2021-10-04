@@ -1,35 +1,49 @@
 import React, { useEffect } from 'react'
+
 import { getAllTasks, createTask, writePendingTask } from './actions/taskActions'
 import { useDispatch, useSelector } from 'react-redux'
+import { makeStyles } from '@material-ui/styles'
+
+import Title from './components/Title'
+import TaskList from './components/TaskList'
+import Form from './components/Form'
+
+const useStyles = makeStyles({
+  root: {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    color: 'rgb(168, 186, 204)'
+  },
+})
 
 const App = () => {
+  const styles = useStyles()
   const dispatch = useDispatch()
+
   const pendingTask = useSelector(state => state.tasks.pendingTask)
-  // const incompleteTodos = useSelector(state => state?.tasks?.incompleteTodos)
-  // const proceedingTodos = useSelector(state => state?.tasks?.proceedingTodos)
-  // const completedTodos = useSelector(state => state?.tasks?.completedTodos)
+  const incompleteTasks = useSelector(state => state?.tasks?.incompleteTasks)
+  const proceedingTasks = useSelector(state => state?.tasks?.proceedingTasks)
+  const completedTasks = useSelector(state => state?.tasks?.completedTasks)
+
+  useEffect(() => {
+    dispatch(getAllTasks())
+  }, [dispatch])
 
   return (
-    <>
-      <div>APP</div>
-      <button onClick={() => dispatch(getAllTasks())}>get all tasks</button>
-      <h1>Add A Task</h1>
-      <form
+    <div className={styles.root}>
+      <Title />
+      <Form
         onSubmit={e => {
-          e.preventDefault()
           dispatch(createTask(pendingTask))
         }}
-      >
-        <input
-          id='task'
-          placeholder='Add Task'
-          type='text'
-          onChange={e => dispatch(writePendingTask(e.target.value))}
-          value={pendingTask}
-        />
-        <button type='submit'>Submit</button>
-      </form>
-    </>
+        onChange={value => dispatch(writePendingTask(value))}
+        value={pendingTask}
+      />
+      <TaskList incompleteTasks={incompleteTasks} proceedingTasks={proceedingTasks} completedTasks={completedTasks} />
+    </div>
   )
 }
 
