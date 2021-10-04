@@ -6,12 +6,27 @@ const useStyles = makeStyles({
   form: {
     display: 'flex',
     alignItems: 'center',
-    margin: '24px 24px 32px 24px'
+    margin: '24px 24px 32px 24px',
+    '@media (max-width: 680px)': {
+      flexDirection: 'column',
+      margin: '24px'
+    }
   },
   box: {
     width: '500px',
     maxWidth: '100%',
-    marginRight: '16px'
+    marginRight: '16px',
+    '@media (max-width: 680px)': {
+      marginBottom: '16px',
+      width: '70vw'
+    }
+  },
+  textField: {
+    '& input': {
+      '@media (max-width: 680px)': {
+        textAlign: 'center'
+      }
+    }
   },
   button: {
     background: 'inherit',
@@ -37,6 +52,7 @@ const Form = ({ onSubmit, onChange, value }) => {
     >
       <Box className={styles.box}>
         <TextField
+          className={styles.textField}
           fullWidth
           value={value}
           onChange={e => onChange(e.target.value)}

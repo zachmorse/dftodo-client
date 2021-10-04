@@ -27,11 +27,17 @@ const useStyles = makeStyles({
   },
   infoContainer: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    '@media (max-width: 680px)': {
+      fontSize: '14px'
+    }
   },
   metaData: {
     fontStyle: 'italic',
-    fontSize: '12px'
+    fontSize: '12px',
+    '@media (max-width: 680px)': {
+      fontSize: '10px'
+    }
   },
   iconButton: {
     color: 'rgb(81 89 98)'

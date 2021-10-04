@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     color: 'rgb(168, 186, 204)'
   }
 })

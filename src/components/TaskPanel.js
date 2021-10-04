@@ -23,7 +23,20 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    transition: 'height 250ms'
+    transition: 'height 250ms',
+    '@media (max-width: 1330px)': {
+      maxWidth: '100%',
+      width: '70vw'
+    },
+    '@media (max-width: 860px)': {
+      maxWidth: '100%',
+      width: '70vw'
+    },
+    '@media (max-width: 590px)': {
+      maxWidth: '100%',
+      width: '85vw',
+      maxHeight: '60vh'
+    }
   },
   panelBox: {
     padding: '16px',
@@ -68,8 +81,8 @@ const TaskPanel = ({ allTasks, incompleteTasks, proceedingTasks, completedTasks 
   return (
     <Grow in={allTasks.length > 0}>
       <Box className={styles.container}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={activeTab} onChange={handleTabChange}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', maxWidth: '100%' }}>
+          <Tabs value={activeTab} onChange={handleTabChange} variant='scrollable' scrollButtons='auto'>
             <Tab disabled={allTasks.length === 0} label={`All Tasks (${allTasks.length})`} />
             <Tab disabled={incompleteTasks.length === 0} label={`Incomplete (${incompleteTasks.length})`} />
             <Tab disabled={proceedingTasks.length === 0} label={`In Progress (${proceedingTasks.length})`} />

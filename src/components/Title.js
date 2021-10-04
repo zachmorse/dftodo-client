@@ -2,12 +2,28 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
+  titleContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+    ,'@media (max-width: 820px)': {
+      textAlign: 'center'
+    },
+  },
   title: {
     letterSpacing: '4px',
     fontSize: '64px',
     color: '#303030',
     marginBottom: '0px',
-    marginTop: '24px'
+    marginTop: '24px',
+    '@media (max-width: 1060px)': {
+      fontSize: '48px'
+    },
+    '@media (max-width: 820px)': {
+      fontSize: '40px'
+    },
+    '@media (max-width: 720px)': {
+      fontSize: '32px'
+    },
   },
   emphasis: {
     backgroundColor: 'red',
@@ -24,9 +40,11 @@ const useStyles = makeStyles({
 const Title = () => {
   const styles = useStyles()
   return (
-    <h1 className={styles.title}>
-      CREATE. COMPLETE. <span className={styles.emphasis}>CONQUER.</span>
-    </h1>
+    <div className={styles.titleContainer}>
+      <h1 className={styles.title}>
+        CREATE. COMPLETE. <span className={styles.emphasis}>CONQUER.</span>
+      </h1>
+    </div>
   )
 }
 
