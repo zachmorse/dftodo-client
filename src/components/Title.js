@@ -6,7 +6,8 @@ const useStyles = makeStyles({
     letterSpacing: '4px',
     fontSize: '64px',
     color: '#303030',
-    marginBottom: '0px'
+    marginBottom: '0px',
+    marginTop: '24px'
   },
   emphasis: {
     backgroundColor: 'red',

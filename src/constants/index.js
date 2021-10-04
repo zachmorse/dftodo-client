@@ -1,3 +1,4 @@
 export const GET_ALL_TASKS = 'GET_ALL_TASKS'
 export const CREATE_TASK = 'CREATE_TASK'
 export const WRITE_PENDING_TASK = 'WRITE_PENDING_TASK'
+export const DELETE_TASK = 'DELETE_TASK'

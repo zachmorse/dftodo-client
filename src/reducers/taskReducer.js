@@ -1,4 +1,4 @@
-import { GET_ALL_TASKS, CREATE_TASK, WRITE_PENDING_TASK } from '../constants'
+import { GET_ALL_TASKS, CREATE_TASK, WRITE_PENDING_TASK, DELETE_TASK } from '../constants'
 
 const initialState = {
   pendingTask: '',
@@ -21,6 +21,15 @@ const taskReducer = (state = initialState, action) => {
         completedTasks: action.payload.filter(x => x.status === 'complete')
       }
     case GET_ALL_TASKS:
+      return {
+        ...state,
+        allTasks: action.payload,
+        incompleteTasks: action.payload.filter(x => x.status === 'incomplete'),
+        proceedingTasks: action.payload.filter(x => x.status === 'proceeding'),
+        completedTasks: action.payload.filter(x => x.status === 'complete')
+      }
+
+    case DELETE_TASK:
       return {
         ...state,
         allTasks: action.payload,

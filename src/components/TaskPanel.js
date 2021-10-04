@@ -52,7 +52,7 @@ const TabPanel = props => {
     >
       {value === index && (
         <Box>
-          <Typography>{children}</Typography>
+          <Typography component={'span'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -70,10 +70,10 @@ const TaskPanel = ({ allTasks, incompleteTasks, proceedingTasks, completedTasks 
       <Box className={styles.container}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={activeTab} onChange={handleTabChange}>
-            <Tab label='All Tasks' />
-            <Tab label='Incomplete' />
-            <Tab label='In Progress' />
-            <Tab label='Completed' />
+            <Tab disabled={allTasks.length === 0} label={`All Tasks (${allTasks.length})`} />
+            <Tab disabled={incompleteTasks.length === 0} label={`Incomplete (${incompleteTasks.length})`} />
+            <Tab disabled={proceedingTasks.length === 0} label={`In Progress (${proceedingTasks.length})`} />
+            <Tab disabled={completedTasks.length === 0} label={`Completed (${completedTasks.length})`} />
           </Tabs>
         </Box>
         <TabPanel value={activeTab} index={0}>
